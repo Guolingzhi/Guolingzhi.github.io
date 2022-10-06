@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  
+</head>
+<body>
+  <h1>点击图片试试</h1>
+  <h2></h2>
+  <img src="images/1.webp" alt="images">
+  <button>切换用户</button>
+  <script>
+    var curr_image = document.querySelector("img");
+    curr_image.onclick = function(){
+     var image_src = curr_image.getAttribute("src");
+     if(image_src==="images/1.webp"){
+       curr_image.setAttribute("src","images/2.webp");
+     }else
+     {
+       curr_image.setAttribute("src","images/1.webp");
+     }
+    }
+    var switch_username = document.querySelector("button");
+    var heading_context = document.querySelector("h2");
+
+    function userName(){
+      var user_name = prompt("please input your name：");
+      if(!user_name){
+        userName();
+      }
+      localStorage.setItem("name",user_name);
+      heading_context.textContent = "Mozilla 酷毙了"+ user_name;
+    }
+
+    if(!localStorage.getItem("name")){
+      userName();
+    }else{
+      var store_name = localStorage.getItem("name");
+      heading_context.textContent = "Mozilla 酷毙了"+store_name;
+    }
+
+    
+    
+    switch_username.onclick= function(){
+      userName();
+    }
+   </script>
+</body>
+</html>
